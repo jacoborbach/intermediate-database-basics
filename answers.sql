@@ -102,9 +102,83 @@ join album am on am.artist_id = a.artist_id
 group by a.name
 
 
+select distinct composer from track
+
+SELECT DISTINCT billing_postal_code
+FROM invoice;
+
+select DISTINCT company
+FROM customer;
+
+delete from practice_delete
+where type = 'bronze'
+
+delete from practice_delete
+where type = 'silver'
+
+DELETE 
+FROM practice_delete 
+WHERE value = 150;
 
 
 
+create table users (
+	id serial primary key,
+  name varchar,
+  email varchar
+  );
+  
+create table products (
+  id serial primary key,
+  name varchar,
+  price int
+  );
+ 
+create table orders (
+  id serial primary key,
+  product_id int references products(id),
+  OrderDate date ,
+  quantity int
+  );
+
+insert into users (name, email)
+values (
+  'Jake',
+  'jacob@gmail.com'
+  ),
+  
+  ('Rach',
+  'rach@gmail.com'),
+  
+  ('Nay',
+  'nay@gmail.com');
+
+  
+  insert into products (name, price)
+values (
+  'Cheese',
+  10
+  ),
+  
+  ('Marijuana',
+  15),
+  
+  ('Milk',
+  5;
+  
+insert into orders (quantity, orderdate, product_id)
+values (4, '2019-01-22', 1),
+(2, '2014-02-05', 1),
+(8, '2019-12-19', 2)
 
 
+select * from products p
+join orders o on p.id=o.product_id
+order by orderdate asc
+limit 1
 
+select * from orders
+
+select p.name, price*quantity as "Total Price", quantity, price from orders o
+join products p on p.id = o.product_id
+limit 1
