@@ -182,3 +182,35 @@ select * from orders
 select p.name, price*quantity as "Total Price", quantity, price from orders o
 join products p on p.id = o.product_id
 limit 1
+
+alter table products
+add user_id int references users(id);
+
+update products
+set user_id =5
+where id = 3;
+
+update products
+set user_id =6
+where id = 2;
+
+update products
+set user_id =4
+where id = 1;
+
+select * from orders o
+join products p on o.product_id = p.id
+join users u on u.id= p.user_id
+where p.user_id = 4;
+
+select u.name, count(*) from orders o
+join products p on o.product_id = p.id
+join users u on u.id= p.user_id
+group by u.name
+
+--diamond
+
+select u.name, sum((o.quantity*p.price)) as "total" from orders o
+join products p on o.product_id = p.id
+join users u on u.id= p.user_id
+group by u.name
